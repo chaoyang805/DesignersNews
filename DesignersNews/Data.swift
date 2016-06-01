@@ -18,7 +18,7 @@ var data: JSON = [
         "vote_count": 55,
         "created_at": "2016-05-11T17:01:57Z",
         "pinned_at": "",
-        "url": "https://news.layervault.com/click/stories/44959",
+        "url": "http://gank.io/2016/05/20",
         "site_url": "https://api-news.layervault.com/stories/44959-testing-apple-watch-applications-my-way",
         "user_id": 8104,
         "user_display_name": "Mahdi A.",

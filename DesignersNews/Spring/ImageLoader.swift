@@ -29,8 +29,8 @@ public class ImageLoader {
     var cache = NSCache()
     
     public class var sharedLoader : ImageLoader {
-    struct Static {
-        static let instance : ImageLoader = ImageLoader()
+        struct Static {
+            static let instance : ImageLoader = ImageLoader()
         }
         return Static.instance
     }
