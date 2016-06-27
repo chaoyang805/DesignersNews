@@ -60,6 +60,20 @@ struct DesignerNewsService {
         }
     }
     
+    static func storyForId(storyId: Int, response: (JSON) -> Void) {
+        let urlString = BaseURL + ResourcePath.StoryId(storyId: storyId).description
+        
+        let parameters = [
+            "client_id" : clientID
+        ]
+        Alamofire.request(.GET, urlString, parameters: parameters).responseJSON { (aResponse) in
+            let data = aResponse.result.value
+            let story = JSON(data ?? [])
+            response(story)
+            
+        }
+    }
+    
     static func loginWithEmail(email: String, password: String, response: (token: String?) -> Void) {
         
         let urlString = BaseURL + ResourcePath.Login.description
@@ -88,6 +102,16 @@ struct DesignerNewsService {
         upvoteWithUrlString(urlString, token: token, response: response)
     }
     
+    static func replyWithStoryId(storyId: Int, token: String, body: String, response: (successful: Bool) -> Void) {
+        let urlString = BaseURL + ResourcePath.StoryReply(storyId: storyId).description
+        replyWithUrlString(urlString, token: token, body: body, response: response)
+    }
+    
+    static func replyWithCommentId(commentId: Int, token: String, body: String, response: (successful: Bool) -> Void) {
+        let urlString = BaseURL + ResourcePath.CommentReply(commentId: commentId).description
+        replyWithUrlString(urlString, token: token, body: body, response: response)
+    }
+    
     private static func upvoteWithUrlString(urlString: String, token: String, response: (successful: Bool) -> Void) {
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         request.HTTPMethod = "POST"
@@ -96,6 +120,27 @@ struct DesignerNewsService {
         Alamofire.request(request).response { (_, urlResponse, _, _) in
             let successful = urlResponse?.statusCode == 200
             response(successful: successful)
+        }
+    }
+    
+    private static func replyWithUrlString(urlString: String, token: String, body: String, response: (successful: Bool) -> Void) {
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        request.HTTPMethod = "POST"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.HTTPBody = "comment[body]=\(body)".dataUsingEncoding(NSUTF8StringEncoding)
+        
+        Alamofire.request(request).responseJSON { (aResponse) in
+            guard let data = aResponse.result.value else {
+                
+                response(successful: false)
+                return
+            }
+            let json = JSON(data)
+            if let _ = json["comment"].string {
+                response(successful: true)
+            } else {
+                response(successful: false)
+            }
         }
     }
     

@@ -17,6 +17,9 @@
 		2132C1D61CF495F8006FC567 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2132C1D11CF495F8006FC567 /* TPKeyboardAvoidingTableView.m */; };
 		2132C1D71CF495F8006FC567 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2132C1D31CF495F8006FC567 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		213322011CD245B300463AB2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213322001CD245B300463AB2 /* LoginViewController.swift */; };
+		213488101D0317D6003B7B8F /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2134880F1D0317D5003B7B8F /* ReplyViewController.swift */; };
+		2134881C1D03333B003B7B8F /* refresh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2134881A1D03333B003B7B8F /* refresh.wav */; };
+		2134881D1D03333B003B7B8F /* upvote.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2134881B1D03333B003B7B8F /* upvote.wav */; };
 		2138AE621CE219A900270757 /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138AE611CE219A900270757 /* StoryTableViewCell.swift */; };
 		21573CA31CE0CEDD00EC5C2A /* StoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21573CA21CE0CEDD00EC5C2A /* StoriesTableViewController.swift */; };
 		21573CA51CE0D86800EC5C2A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21573CA41CE0D86800EC5C2A /* WebViewController.swift */; };
@@ -164,6 +167,9 @@
 		2132C1D21CF495F8006FC567 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		2132C1D31CF495F8006FC567 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		213322001CD245B300463AB2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2134880F1D0317D5003B7B8F /* ReplyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
+		2134881A1D03333B003B7B8F /* refresh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = refresh.wav; sourceTree = "<group>"; };
+		2134881B1D03333B003B7B8F /* upvote.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = upvote.wav; sourceTree = "<group>"; };
 		2138AE611CE219A900270757 /* StoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
 		21573CA21CE0CEDD00EC5C2A /* StoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoriesTableViewController.swift; sourceTree = "<group>"; };
 		21573CA41CE0D86800EC5C2A /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +279,15 @@
 			path = Spring/TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
+		213488191D03333B003B7B8F /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				2134881A1D03333B003B7B8F /* refresh.wav */,
+				2134881B1D03333B003B7B8F /* upvote.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		218621D91CCE55CB00DD0532 /* Spring */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +349,7 @@
 		219143A61CCCCD9700288901 /* DesignersNews */ = {
 			isa = PBXGroup;
 			children = (
+				213488191D03333B003B7B8F /* Sounds */,
 				2132C1CB1CF495F8006FC567 /* TPKeyboardAvoiding */,
 				218621D91CCE55CB00DD0532 /* Spring */,
 				219143A71CCCCD9700288901 /* AppDelegate.swift */,
@@ -342,6 +358,7 @@
 				2138AE611CE219A900270757 /* StoryTableViewCell.swift */,
 				212923CB1CEB65DA005CBCAE /* CommentsTableViewController.swift */,
 				21C2EE2C1CECB4A800AC4185 /* CommentTableViewCell.swift */,
+				2134880F1D0317D5003B7B8F /* ReplyViewController.swift */,
 				213322001CD245B300463AB2 /* LoginViewController.swift */,
 				21F242751CFDD1AE0025F8CB /* LocalStore.swift */,
 				2102358C1CD71A1500077067 /* LearnViewController.swift */,
@@ -547,6 +564,8 @@
 				219143B51CCCCD9700288901 /* LaunchScreen.storyboard in Resources */,
 				219143B21CCCCD9700288901 /* Assets.xcassets in Resources */,
 				219143AD1CCCCD9700288901 /* Main.storyboard in Resources */,
+				2134881C1D03333B003B7B8F /* refresh.wav in Resources */,
+				2134881D1D03333B003B7B8F /* upvote.wav in Resources */,
 				218622071CCE55CB00DD0532 /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +600,7 @@
 				218622081CCE55CB00DD0532 /* Misc.swift in Sources */,
 				2132C1D51CF495F8006FC567 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2102358D1CD71A1500077067 /* LearnViewController.swift in Sources */,
+				213488101D0317D6003B7B8F /* ReplyViewController.swift in Sources */,
 				21C2EE2B1CECB06C00AC4185 /* SwiftyJSON.swift in Sources */,
 				2132C1D61CF495F8006FC567 /* TPKeyboardAvoidingTableView.m in Sources */,
 				2159C1361CE3702E009E0969 /* Data.swift in Sources */,
@@ -765,6 +785,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DesignersNews/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.chaoyang805.DesignersNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -777,6 +798,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DesignersNews/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.chaoyang805.DesignersNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";

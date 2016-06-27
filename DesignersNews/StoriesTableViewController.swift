@@ -42,6 +42,9 @@ class StoriesTableViewController: UITableViewController, StoryTableViewCellDeleg
         
         loadStories("", page: 1)
         refreshControl?.addTarget(self, action: #selector(StoriesTableViewController.refreshStories), forControlEvents: .ValueChanged)
+        
+        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir Next", size: 18)!], forState: .Normal)
+        loginButton.setTitleTextAttributes([NSFontAttributeName : UIFont(name: "Avenir Next", size: 18)!], forState: .Normal)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -53,6 +56,7 @@ class StoriesTableViewController: UITableViewController, StoryTableViewCellDeleg
     }
     
     func refreshStories() {
+        SoundPlayer().playSound("refresh.wav")
         loadStories(section, page: 1)
     }
     
@@ -68,7 +72,6 @@ class StoriesTableViewController: UITableViewController, StoryTableViewCellDeleg
     // MARK: - StoryTableViewCellDelegate
     
     func storyTableViewCell(cell: StoryTableViewCell, didTouchUpvote sender: AnyObject) {
-        // TODO
         guard let token = LocalStore.getToken() else {
             performSegueWithIdentifier("LoginSegue", sender: self)
             return
@@ -80,8 +83,7 @@ class StoriesTableViewController: UITableViewController, StoryTableViewCellDeleg
             NSLog("upvote success \(successful)")
         }
         LocalStore.saveUpvotedStory(storyId)
-        cell.upvoteButton.setImage(UIImage(named: "icon-upvote-active"), forState: .Normal)
-        cell.upvoteButton.setTitle(String(story["vote_count"].int! + 1), forState: .Normal)
+        cell.configureWithStory(story)
     }
     
     func storyTableViewCell(cell: StoryTableViewCell, didTouchComment sender: AnyObject) {

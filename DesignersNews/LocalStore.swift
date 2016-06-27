@@ -39,7 +39,7 @@ struct LocalStore {
         return arrayForKey("upvotedCommentsKey", containsId: commentId)
     }
     // MARK: Helper
-    static func arrayForKey(key: String, containsId id: Int ) -> Bool {
+    private static func arrayForKey(key: String, containsId id: Int ) -> Bool {
         let elements = userDefaults.arrayForKey(key) as? [Int] ?? []
         return elements.contains(id)
     }

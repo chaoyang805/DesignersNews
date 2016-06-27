@@ -51,7 +51,7 @@ class StoryTableViewCell: UITableViewCell {
         let voteCount = story["vote_count"].int ?? 0
         let commentCount = story["comment_count"].int ?? 0
         let comment = story["comment"].string ?? ""
-        let commentHTML = story["comment_html"].string ?? ""
+//        let commentHTML = story["comment_html"].string ?? ""
         
         titleLabel.text = title
         badgeImageView.image = UIImage(named: "badge-\(badge)")
@@ -63,7 +63,15 @@ class StoryTableViewCell: UITableViewCell {
         commentButton.setTitle("\(commentCount)", forState: .Normal)
         if let commentTextView = commentTextView {
             commentTextView.text = comment
-            commentTextView.attributedText = htmlToAttributedString(commentHTML + "<style>*{font-family: \"Avenir Next\"; font-size: 16px; line-height: 20px}img{max-width: 300px}</style>")
+//            commentTextView.attributedText = htmlToAttributedString(commentHTML + "<style>*{font-family: \"Avenir Next\"; font-size: 16px; line-height: 20px}img{max-width: 300px}</style>")
+        }
+        let storyId = story["id"].int!
+        if LocalStore.isStoryUpvoted(storyId) {
+            upvoteButton.setImage(UIImage(named: "icon-upvote-active"), forState: .Normal)
+            upvoteButton.setTitle(String(voteCount + 1), forState: .Normal)
+        } else {
+            upvoteButton.setImage(UIImage(named: "icon-upvote"), forState: .Normal)
+            upvoteButton.setTitle(String(voteCount), forState: .Normal)
         }
         
     }
